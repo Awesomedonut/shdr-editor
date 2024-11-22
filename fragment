@@ -6,7 +6,18 @@ varying vec3 fNormal;
 
 void main()
 {
-  vec3 col = abs(sin(2.0 * fNormal));
+  vec3 light_dir = normalize(vec3(0.0, 1.0, 1.0));
+  vec3 light_col = vec3(1.0, 1.0, 1.0);
+  vec3 albedo = vec3(1.0, 1.0, 1.0);
+  
+  float n_dot_l = dot(light_dir, fNormal);
+  float n_dot_l_clamp = max(0.0, n_dot_l);
+  vec3 col_diffuse = n_dot_l_clamp * light_col * albedo;
+  
+  
+  //vec3 col = abs(sin(2.0 * fNormal));
+  
+  vec3 col = col_diffuse;
   
   gl_FragColor = vec4(col, 1.0);
 }
