@@ -1,5 +1,4 @@
 // https://shdr.bkcore.com/
-// torus
 
 precision highp float;
 attribute vec3 position;
